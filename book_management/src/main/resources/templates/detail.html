@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+ <html xmlns:th="https://www.thymeleaf.org">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">	
+         <title>書籍管理アプリ 詳細</title>
+         <link rel="stylesheet" href="/css/style.css">	
+     </head>
+     
+      <body>                                                               
+        <header>                                                             
+          <h1>書籍管理システム</h1>                                                   
+       </header> 
+         <main>                                                               
+           <h3>タイトル</h3>  
+           <div th:text = "${book.getTitle()}"></div>                                               
+           <h3>巻数</h3>  
+           <div th:text = "${book.getNumberOfTurns()}"></div>  
+           <h3>著者名</h3>
+           <div th:text = "${book.getAuthorName()}"></div> 
+           <h3>出版社名</h3>
+           <div th:text = "${book.getPublisherName()}"></div> 
+           <h3>評価</h3>    
+           <h3>コメント</h3>   
+           <button id="backButton">戻る</button>     
+          <div id="buttonContainer">
+           <button id="updateButton">更新</button>
+           <button id="deleteButton">削除</button>
+          </div>
+ 
+          <script>
+            // 戻るボタンがクリックされたときの処理
+            document.getElementById("backButton").addEventListener("click", function() {
+            // 検索画面への遷移（例: index.htmlに遷移）
+            window.location.href = "http://localhost:8080/?continue";  });
+            
+            function updatePopup() {
+             alert("本当に更新しますか？");
+            }
+            function deletePopup() {
+             alert("本当に削除しますか？");
+            }
+            document.getElementById("updateButton").addEventListener("click", updatePopup);
+            document.getElementById("deleteButton").addEventListener("click", deletePopup);
+            
+             // 更新ボタンがクリックされたときの処理
+            document.getElementById("updateButton").addEventListener("click", function() {
+            // 検索画面への遷移（例: index.htmlに遷移）
+            window.location.href = "http://localhost:8080/?continue";  });
+            
+             // 削除ボタンがクリックされたときの処理
+            document.getElementById("deleteButton").addEventListener("click", function() {
+            // 検索画面への遷移（例: index.htmlに遷移）
+            window.location.href = "http://localhost:8080/?continue";  });
+          </script>    
+         </main>                                                              
+      </body>                                                              
+ </html>

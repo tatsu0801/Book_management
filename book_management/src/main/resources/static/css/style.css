@@ -1,0 +1,97 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header h1 {
+  margin-right: auto;
+}
+
+#first-paragraph {
+	color: rgb(255, 255, 255);
+	border: 1px solid #000; /* 枠線を追加 */
+    background-color: rgb(0, 128, 255);
+  }
+
+#second-paragraph {
+	color: rgb(255, 255, 255);
+	border: 1px solid #000; /* 枠線を追加 */
+    background-color: rgb(0, 128, 255);
+    margin-top: 15px;
+  }
+
+button {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 128, 255);
+  border: 1px solid #000; /* 枠線を追加 */
+}
+
+#backButton {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+}
+
+#buttonContainer {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+}
+
+#buttonContainer button {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.button-container {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+}
+
+label1 {
+  margin-right: 32px;
+}
+
+label2 {
+  margin-right: 16px;
+}
+
+select {
+  margin-left: 16px;
+}
+
+.rate-form {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.rate-form input[type=radio] {
+  display: none;
+}
+.rate-form label {
+  position: relative;
+  padding: 0 5px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 35px;
+}
+.rate-form label:hover {
+  color: #ffcc00;
+}
+.rate-form label:hover ~ label {
+  color: #ffcc00;
+}
+.rate-form input[type=radio]:checked ~ label {
+  color: #ffcc00;
+}
+
+.center-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+}

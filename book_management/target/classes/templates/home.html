@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>書籍管理アプリ ホーム（検索/一覧）</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+	<header>
+		<div class="header">
+			<h1>書籍管理システム</h1>
+			<button id="add-button">追加</button>
+		</div>
+	</header>
+	<main>
+		<p id="first-paragraph">検索</p>
+		<form>
+			<div>
+				<label for="mySearch">タイトル</label>
+				<input type="search" id="mySearch" name="keyword" placeholder="タイトル検索..." size="50" />
+				<button>検索</button>
+			</div>
+		</form>
+		<p id="second-paragraph">並び替え</p>
+		<button id="title">タイトル</button>
+		<button id="author">著者</button>
+		<button id="publisher">出版社</button>
+		<div class="container pt-4 pb-5 samuraitravel-container">
+			<div class="row justify-content-center">
+				<div class="col-xxl-9 col-xl-10 col-lg-11">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">タイトル</th>
+								<th scope="col">著者</th>
+								<th scope="col">出版社</th>
+								<th scope="col">dummy</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="book : ${books}">
+								<td th:text="${book.getTitle()}"></td>
+								<td th:text="${book.getAuthorName()}"></td>
+								<td th:text="${book.getPublisherName()}"></td>
+								<td><a th:href="@{/detail/__${book.getManagementId()}__}">詳細</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script>
+			const title = document.getElementById('title');
+			const author = document.getElementById('author');
+			const publisher = document.getElementById('publisher');
+
+			// タイトルのクリックイベントの設定
+			title.addEventListener('click', function () {
+				// タイトルの色を変更
+				title.style.backgroundColor = 'blue';
+				// 著者の色を初期の色に戻す
+				author.style.backgroundColor = '';
+				// 出版社の色を初期の色に戻す
+				publisher.style.backgroundColor = '';
+			});
+
+			// 著者のクリックイベントの設定
+			author.addEventListener('click', function () {
+				// 著者の色を変更
+				author.style.backgroundColor = 'blue';
+				// タイトルの色を初期の色に戻す
+				title.style.backgroundColor = '';
+				// 出版社の色を初期の色に戻す
+				publisher.style.backgroundColor = '';
+			});
+
+			// ボタン3のクリックイベントの設定
+			publisher.addEventListener('click', function () {
+				// ボタン3の色を変更
+				publisher.style.backgroundColor = 'blue';
+				// 著者の色を初期の色に戻す
+				author.style.backgroundColor = '';
+				// 出版社の色を初期の色に戻す
+				title.style.backgroundColor = '';
+			});
+
+			// 追加ボタンがクリックされたときの処理
+			document.getElementById("add-button").addEventListener("click", function () {
+				// 検索画面への遷移（例: index.htmlに遷移）
+				window.location.href = "http://localhost:8080/add";
+			});
+		</script>
+		<div class="block-list">
+		</div>
+	</main>
+</body>
+
+</html>
