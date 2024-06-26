@@ -74,6 +74,9 @@
 				author.style.backgroundColor = '';
 				// 出版社の色を初期の色に戻す
 				publisher.style.backgroundColor = '';
+				var url = location.search;
+				console.log(url);
+				window.location.href = `http://localhost:8080/?order=title`;
 			});
 
 			// 著者のクリックイベントの設定
@@ -84,6 +87,9 @@
 				title.style.backgroundColor = '';
 				// 出版社の色を初期の色に戻す
 				publisher.style.backgroundColor = '';
+				
+				window.location.href = `http://localhost:8080/?order=author`;
+				
 			});
 
 			// ボタン3のクリックイベントの設定
@@ -94,6 +100,8 @@
 				author.style.backgroundColor = '';
 				// 出版社の色を初期の色に戻す
 				title.style.backgroundColor = '';
+				
+				window.location.href = `http://localhost:8080/?order=publisher`;
 			});
 
 			// 追加ボタンがクリックされたときの処理

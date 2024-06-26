@@ -20,15 +20,26 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home(Model model, Pageable pageable,
-			@RequestParam(name = "keyword", required = false) String keyword) {
-		System.out.println(keyword);
+			@RequestParam(name = "keyword", required = false) String keyword,
+			@RequestParam(name = "order", required = false) String order) {
+		System.out.println("検索ワード = " + keyword + ", 並び順 =" + order);
 		Page<Book> books;
 
 		if (keyword != null) {
 			books = bookRepository.findByTitleLike("%" + keyword + "%", pageable);
-
 		} else {
-			books = bookRepository.findAll(pageable);
+			if (order == null) {
+				books = bookRepository.findAll(pageable);
+			} else if (order.equals("title")) {
+				books = bookRepository.findByTitleLikeOrderByTitle("%%", pageable);
+			} else if (order.equals("author")) {
+				books = bookRepository.findByTitleLikeOrderByAuthorName("%%", pageable);
+			} else if (order.equals("publisher")) {
+				books = bookRepository.findByTitleLikeOrderByPublisherName("%%", pageable);
+			} else {
+				books = bookRepository.findAll(pageable);
+			}
+
 		}
 
 		model.addAttribute("books", books);
